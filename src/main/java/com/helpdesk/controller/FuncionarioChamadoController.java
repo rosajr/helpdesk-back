@@ -1,6 +1,7 @@
 package com.helpdesk.controller;
 
 import com.helpdesk.model.FuncionarioChamado;
+import com.helpdesk.model.dto.AtribuirChamadoDto;
 import com.helpdesk.model.dto.FuncionarioDto;
 import com.helpdesk.service.FuncionarioChamadoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +28,7 @@ public class FuncionarioChamadoController {
     }
 
     @PostMapping
-    public ResponseEntity<FuncionarioChamado> atribuirChamado(@RequestBody FuncionarioDto dto){
+    public ResponseEntity<FuncionarioChamado> atribuirChamado(@RequestBody AtribuirChamadoDto dto){
         return ResponseEntity.status(HttpStatus.CREATED).body(funcionarioChamadoService.add(dto));
     }
 

@@ -1,6 +1,7 @@
 package com.helpdesk.service.impl;
 
 import com.helpdesk.model.Chamado;
+import com.helpdesk.model.dto.AlterarStatusChamadoDto;
 import com.helpdesk.model.dto.ChamadoDto;
 import com.helpdesk.repository.ChamadoRepository;
 import com.helpdesk.repository.FuncionarioRepository;
@@ -25,6 +26,13 @@ public class ChamadoServiceImpl implements ChamadoService {
 
 
     @Override
+    public Chamado alterarStatus(AlterarStatusChamadoDto alterarStatusChamadoDto) {
+        Chamado chamado = findById(alterarStatusChamadoDto.getChamadoId());
+        chamado.setStatus(statusRepository.findById(alterarStatusChamadoDto.getStatusId()).get());
+        return chamado;
+    }
+
+    @Override
     public Chamado add(ChamadoDto chamadoDto) {
         Chamado chamado = new Chamado();
         chamado.setDescription(chamadoDto.getDescription());
@@ -35,7 +43,7 @@ public class ChamadoServiceImpl implements ChamadoService {
     }
 
     @Override
-    public Chamado update(ChamadoDto chamadoDto, Integer id) {
+    public Chamado update(ChamadoDto chamadoDto, Long id) {
         Chamado chamado = findById(id);
         chamado.setDescription(chamadoDto.getDescription());
         chamado.setFuncionario(funcionarioRepository.findById(chamadoDto.getFuncionarioMat()).get());
@@ -45,12 +53,12 @@ public class ChamadoServiceImpl implements ChamadoService {
     }
 
     @Override
-    public Chamado findById(Integer id) {
+    public Chamado findById(Long id) {
         return chamadoRepository.findById(id).get();
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(Long id) {
     chamadoRepository.delete(findById(id));
     }
 

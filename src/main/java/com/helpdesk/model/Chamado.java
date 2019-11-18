@@ -18,7 +18,7 @@ public class Chamado implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "CHA_ID")
-    private Integer id;
+    private Long id;
 
     @Column(name = "CHA_DESCRICAO")
     private String description;

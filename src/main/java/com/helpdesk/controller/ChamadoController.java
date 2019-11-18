@@ -1,6 +1,7 @@
 package com.helpdesk.controller;
 
 import com.helpdesk.model.Chamado;
+import com.helpdesk.model.dto.AlterarStatusChamadoDto;
 import com.helpdesk.model.dto.ChamadoDto;
 import com.helpdesk.service.ChamadoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +18,13 @@ public class ChamadoController {
     ChamadoService chamadoService;
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<Chamado> findById(@PathVariable Integer id){
+    public ResponseEntity<Chamado> findById(@PathVariable Long id){
         return ResponseEntity.ok().body(chamadoService.findById(id));
+    }
+
+    @PutMapping(value = "/alterarStatus")
+    public ResponseEntity<Chamado> alterarStatus(@RequestBody AlterarStatusChamadoDto alterarStatusChamadoDto){
+        return ResponseEntity.ok().body(chamadoService.alterarStatus(alterarStatusChamadoDto));
     }
 
     @GetMapping
@@ -32,7 +38,7 @@ public class ChamadoController {
     }
 
     @DeleteMapping(value = "/{id}")
-    public ResponseEntity deleteById(@PathVariable Integer id){
+    public ResponseEntity deleteById(@PathVariable Long id){
         chamadoService.delete(id);
         return ResponseEntity.noContent().build();
     }

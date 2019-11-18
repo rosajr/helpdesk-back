@@ -1,6 +1,7 @@
 package com.helpdesk.service.impl;
 
 import com.helpdesk.model.FuncionarioChamado;
+import com.helpdesk.model.dto.AtribuirChamadoDto;
 import com.helpdesk.model.dto.FuncionarioDto;
 import com.helpdesk.repository.FuncionarioChamadoRepository;
 import com.helpdesk.service.ChamadoService;
@@ -21,10 +22,10 @@ public class FuncionarioChamadoServiceImpl implements FuncionarioChamadoService 
     private ChamadoService chamadoService;
 
     @Override
-    public FuncionarioChamado add(FuncionarioDto dto) {
+    public FuncionarioChamado add(AtribuirChamadoDto dto) {
         FuncionarioChamado model = new FuncionarioChamado();
-//        model.setChamado(chamadoService.findById(dto.getChaId()));
-//        model.setFuncionario(funcionarioService.findById(dto.getFunId()));
+        model.setChamado(chamadoService.findById(dto.getChamadoId()));
+        model.setFuncionario(funcionarioService.findById(dto.getFuncionarioMat()));
         return funcionarioChamadoRepository.save(model);
     }
 
