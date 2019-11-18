@@ -1,15 +1,15 @@
 package com.helpdesk.service;
 
-import com.helpdesk.model.FuncionarioChamadoModel;
-import com.helpdesk.model.dto.FuncionarioChamadoDto;
+import com.helpdesk.model.FuncionarioChamado;
+import com.helpdesk.model.dto.FuncionarioDto;
 
 import java.util.List;
 
 
 public interface FuncionarioChamadoService {
-    FuncionarioChamadoModel add(FuncionarioChamadoDto dto);
-    FuncionarioChamadoModel update(FuncionarioChamadoModel funcionarioChamadoModel, Integer id);
-    FuncionarioChamadoModel findById(Integer id);
+    FuncionarioChamado add(FuncionarioDto dto);
+    FuncionarioChamado update(FuncionarioChamado funcionarioChamado, Integer id);
+    FuncionarioChamado findById(Integer id);
     void delete(Integer id);
-    List<FuncionarioChamadoModel> findAll();
+    List<FuncionarioChamado> findAll();
 }

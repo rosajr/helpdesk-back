@@ -1,6 +1,7 @@
 package com.helpdesk.controller;
 
-import com.helpdesk.model.ChamadoModel;
+import com.helpdesk.model.Chamado;
+import com.helpdesk.model.dto.ChamadoDto;
 import com.helpdesk.service.ChamadoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,18 +17,18 @@ public class ChamadoController {
     ChamadoService chamadoService;
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<ChamadoModel> findById(@PathVariable Integer id){
+    public ResponseEntity<Chamado> findById(@PathVariable Integer id){
         return ResponseEntity.ok().body(chamadoService.findById(id));
     }
 
     @GetMapping
-    public ResponseEntity<List<ChamadoModel>> findAll(){
+    public ResponseEntity<List<Chamado>> findAll(){
         return ResponseEntity.ok().body(chamadoService.findAll());
     }
 
     @PostMapping
-    public ResponseEntity<ChamadoModel> save(@RequestBody ChamadoModel chamadoModel){
-        return ResponseEntity.status(HttpStatus.CREATED).body(chamadoService.add(chamadoModel));
+    public ResponseEntity<Chamado> save(@RequestBody ChamadoDto chamadoDto){
+        return ResponseEntity.status(HttpStatus.CREATED).body(chamadoService.add(chamadoDto));
     }
 
     @DeleteMapping(value = "/{id}")

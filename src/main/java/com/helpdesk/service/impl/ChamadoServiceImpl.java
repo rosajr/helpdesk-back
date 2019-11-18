@@ -1,7 +1,11 @@
 package com.helpdesk.service.impl;
 
-import com.helpdesk.model.ChamadoModel;
+import com.helpdesk.model.Chamado;
+import com.helpdesk.model.dto.ChamadoDto;
 import com.helpdesk.repository.ChamadoRepository;
+import com.helpdesk.repository.FuncionarioRepository;
+import com.helpdesk.repository.SetorRepository;
+import com.helpdesk.repository.StatusRepository;
 import com.helpdesk.service.ChamadoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,20 +16,36 @@ import java.util.List;
 public class ChamadoServiceImpl implements ChamadoService {
     @Autowired
     private ChamadoRepository chamadoRepository;
+    @Autowired
+    private FuncionarioRepository funcionarioRepository;
+    @Autowired
+    private SetorRepository setorRepository;
+    @Autowired
+    private StatusRepository statusRepository;
+
 
     @Override
-    public ChamadoModel add(ChamadoModel chamadoModel) {
-        return chamadoRepository.save(chamadoModel);
+    public Chamado add(ChamadoDto chamadoDto) {
+        Chamado chamado = new Chamado();
+        chamado.setDescription(chamadoDto.getDescription());
+        chamado.setFuncionario(funcionarioRepository.findById(chamadoDto.getFuncionarioMat()).get());
+        chamado.setSetor(setorRepository.findById(chamadoDto.getSetorId()).get());
+        chamado.setStatus(statusRepository.findById(chamadoDto.getStatusId()).get());
+        return chamadoRepository.save(chamado);
     }
 
     @Override
-    public ChamadoModel update(ChamadoModel chamadoModel, Integer id) {
-        chamadoModel.setId(id);
-        return chamadoModel;
+    public Chamado update(ChamadoDto chamadoDto, Integer id) {
+        Chamado chamado = findById(id);
+        chamado.setDescription(chamadoDto.getDescription());
+        chamado.setFuncionario(funcionarioRepository.findById(chamadoDto.getFuncionarioMat()).get());
+        chamado.setSetor(setorRepository.findById(chamadoDto.getSetorId()).get());
+        chamado.setStatus(statusRepository.findById(chamadoDto.getStatusId()).get());
+        return chamadoRepository.save(chamado);
     }
 
     @Override
-    public ChamadoModel findById(Integer id) {
+    public Chamado findById(Integer id) {
         return chamadoRepository.findById(id).get();
     }
 
@@ -35,7 +55,7 @@ public class ChamadoServiceImpl implements ChamadoService {
     }
 
     @Override
-    public List<ChamadoModel> findAll() {
+    public List<Chamado> findAll() {
         return chamadoRepository.findAll();
     }
 }

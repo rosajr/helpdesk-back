@@ -1,14 +1,15 @@
 package com.helpdesk.service;
 
-import com.helpdesk.model.ChamadoModel;
+import com.helpdesk.model.Chamado;
+import com.helpdesk.model.dto.ChamadoDto;
 
 import java.util.List;
 
 
 public interface ChamadoService {
-    ChamadoModel add(ChamadoModel chamadoModel);
-    ChamadoModel update(ChamadoModel chamadoModel, Integer id);
-    ChamadoModel findById(Integer id);
+    Chamado add(ChamadoDto chamadoDto);
+    Chamado update(ChamadoDto chamadoDto, Integer id);
+    Chamado findById(Integer id);
     void delete(Integer id);
-    List<ChamadoModel> findAll();
+    List<Chamado> findAll();
 }

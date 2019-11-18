@@ -1,7 +1,7 @@
 package com.helpdesk.repository;
 
-import com.helpdesk.model.FuncionarioChamadoModel;
+import com.helpdesk.model.FuncionarioChamado;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface FuncionarioChamadoRepository extends JpaRepository<FuncionarioChamadoModel,Integer> {
+public interface FuncionarioChamadoRepository extends JpaRepository<FuncionarioChamado,Integer> {
 }

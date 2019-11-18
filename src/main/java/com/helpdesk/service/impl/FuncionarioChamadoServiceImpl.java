@@ -1,7 +1,7 @@
 package com.helpdesk.service.impl;
 
-import com.helpdesk.model.FuncionarioChamadoModel;
-import com.helpdesk.model.dto.FuncionarioChamadoDto;
+import com.helpdesk.model.FuncionarioChamado;
+import com.helpdesk.model.dto.FuncionarioDto;
 import com.helpdesk.repository.FuncionarioChamadoRepository;
 import com.helpdesk.service.ChamadoService;
 import com.helpdesk.service.FuncionarioChamadoService;
@@ -21,21 +21,21 @@ public class FuncionarioChamadoServiceImpl implements FuncionarioChamadoService 
     private ChamadoService chamadoService;
 
     @Override
-    public FuncionarioChamadoModel add(FuncionarioChamadoDto dto) {
-        FuncionarioChamadoModel model = new FuncionarioChamadoModel();
-        model.setChamado(chamadoService.findById(dto.getChaId()));
-        model.setFuncionario(funcionarioService.findById(dto.getFunId()));
+    public FuncionarioChamado add(FuncionarioDto dto) {
+        FuncionarioChamado model = new FuncionarioChamado();
+//        model.setChamado(chamadoService.findById(dto.getChaId()));
+//        model.setFuncionario(funcionarioService.findById(dto.getFunId()));
         return funcionarioChamadoRepository.save(model);
     }
 
     @Override
-    public FuncionarioChamadoModel update(FuncionarioChamadoModel funcionarioChamadoModel, Integer id) {
-        funcionarioChamadoModel.setId(id);
-        return funcionarioChamadoModel;
+    public FuncionarioChamado update(FuncionarioChamado funcionarioChamado, Integer id) {
+        funcionarioChamado.setId(id);
+        return funcionarioChamado;
     }
 
     @Override
-    public FuncionarioChamadoModel findById(Integer id) {
+    public FuncionarioChamado findById(Integer id) {
         return funcionarioChamadoRepository.findById(id).get();
     }
 
@@ -45,7 +45,7 @@ public class FuncionarioChamadoServiceImpl implements FuncionarioChamadoService 
     }
 
     @Override
-    public List<FuncionarioChamadoModel> findAll() {
+    public List<FuncionarioChamado> findAll() {
         return funcionarioChamadoRepository.findAll();
     }
 }

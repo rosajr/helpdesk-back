@@ -1,5 +1,6 @@
 package com.helpdesk.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,22 +12,23 @@ import java.io.Serializable;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "chamado",schema = "helpdesk")
-public class ChamadoModel implements Serializable {
+@Table(name = "tb_endereco")
+public class Endereco implements Serializable {
     private static final long serialVersionUID = 1L;
 
+    @JsonIgnore
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "CHA_ID")
+    @Column(name = "END_ID")
     private Integer id;
 
-    @Column(name = "CHA_MOTIVO")
-    private String motivo;
+    @Column(name = "END_RUA")
+    private String rua;
 
-    @Column(name = "CHA_SETOR")
-    private String setor;
+    @Column(name = "END_BAIRRO")
+    private String bairro;
 
-    @OneToOne
-    @JoinColumn(name = "CHA_FUN_ID",referencedColumnName = "FUN_ID")
-    private FuncionarioModel funcionario;
+    @Column(name = "END_NUMERO")
+    private Integer numero;
+
 }

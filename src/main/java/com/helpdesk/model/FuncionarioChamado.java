@@ -11,8 +11,8 @@ import java.io.Serializable;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "funcionario_chamado")
-public class FuncionarioChamadoModel implements Serializable {
+@Table(name = "tb_funcionario_chamado")
+public class FuncionarioChamado implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -21,10 +21,10 @@ public class FuncionarioChamadoModel implements Serializable {
     private Integer id;
 
     @OneToOne
-    @JoinColumn(name = "FUN_ID",referencedColumnName = "FUN_ID")
-    private FuncionarioModel funcionario;
+    @JoinColumn(name = "FUN_MAT",referencedColumnName = "FUN_MATRICULA")
+    private Funcionario funcionario;
 
     @OneToOne
     @JoinColumn(name = "CHA_ID",referencedColumnName = "CHA_ID")
-    private ChamadoModel chamado;
+    private Chamado chamado;
 }

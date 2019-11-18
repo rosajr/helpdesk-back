@@ -7,7 +7,10 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class FuncionarioChamadoDto {
-    private Integer funId;
-    private Integer chaId;
+public class FuncionarioDto {
+   private String nome;
+   private Long tipoId;
+   private String email;
+   private String password;
+   private EnderecoDto endereco;
 }

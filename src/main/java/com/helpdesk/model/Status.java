@@ -1,6 +1,5 @@
 package com.helpdesk.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,16 +11,15 @@ import java.io.Serializable;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "tipo_funcionario",schema = "helpdesk")
-public class TipoFuncionarioModel implements Serializable {
+@Table(name = "tb_status",schema = "helpdesk")
+public class Status implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "TIF_ID")
-    private Integer id;
+    @Column(name = "STA_ID")
+    private Long id;
 
-
-    @Column(name = "TIF_DESCRIPTION")
+    @Column(name = "STA_DESCRICAO")
     private String description;
 }
