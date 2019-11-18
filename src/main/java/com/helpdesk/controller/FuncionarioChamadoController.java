@@ -27,7 +27,7 @@ public class FuncionarioChamadoController {
     }
 
     @PostMapping
-    public ResponseEntity<FuncionarioChamado> save(@RequestBody FuncionarioDto dto){
+    public ResponseEntity<FuncionarioChamado> atribuirChamado(@RequestBody FuncionarioDto dto){
         return ResponseEntity.status(HttpStatus.CREATED).body(funcionarioChamadoService.add(dto));
     }
 
