@@ -22,6 +22,11 @@ public class ChamadoController {
         return ResponseEntity.ok().body(chamadoService.findById(id));
     }
 
+    @GetMapping(value = "funcionario/{id}")
+    public ResponseEntity<List<Chamado>> findByFuncionarioId(@PathVariable Long id){
+        return ResponseEntity.ok().body(chamadoService.findByFuncionarioId(id));
+    }
+
     @PutMapping(value = "/alterarStatus")
     public ResponseEntity<Chamado> alterarStatus(@RequestBody AlterarStatusChamadoDto alterarStatusChamadoDto){
         return ResponseEntity.ok().body(chamadoService.alterarStatus(alterarStatusChamadoDto));

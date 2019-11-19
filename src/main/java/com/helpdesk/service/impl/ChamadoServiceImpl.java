@@ -66,4 +66,9 @@ public class ChamadoServiceImpl implements ChamadoService {
     public List<Chamado> findAll() {
         return chamadoRepository.findAll();
     }
+
+    @Override
+    public List<Chamado> findByFuncionarioId(Long id) {
+        return chamadoRepository.findByFuncionarioId(id);
+    }
 }

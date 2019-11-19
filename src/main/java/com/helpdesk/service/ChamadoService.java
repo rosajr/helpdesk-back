@@ -14,4 +14,5 @@ public interface ChamadoService {
     Chamado findById(Long id);
     void delete(Long id);
     List<Chamado> findAll();
+    List<Chamado> findByFuncionarioId(Long id);
 }
