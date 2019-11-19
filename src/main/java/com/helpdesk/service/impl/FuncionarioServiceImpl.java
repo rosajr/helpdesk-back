@@ -70,6 +70,11 @@ public class FuncionarioServiceImpl implements FuncionarioService {
     }
 
     @Override
+    public List<Funcionario> findByTipoId(Long id) {
+        return funcionarioRepository.findByTipoId(id);
+    }
+
+    @Override
     public void delete(Long id) {
     funcionarioRepository.delete(findById(id));
     }

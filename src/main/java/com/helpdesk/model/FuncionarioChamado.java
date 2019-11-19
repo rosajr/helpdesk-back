@@ -18,7 +18,7 @@ public class FuncionarioChamado implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "FUN_CHA_ID")
-    private Integer id;
+    private Long id;
 
     @OneToOne
     @JoinColumn(name = "FUN_MAT",referencedColumnName = "FUN_MATRICULA")

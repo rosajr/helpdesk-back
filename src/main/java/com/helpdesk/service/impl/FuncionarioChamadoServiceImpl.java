@@ -1,5 +1,6 @@
 package com.helpdesk.service.impl;
 
+import com.helpdesk.model.Chamado;
 import com.helpdesk.model.FuncionarioChamado;
 import com.helpdesk.model.dto.AtribuirChamadoDto;
 import com.helpdesk.model.dto.FuncionarioDto;
@@ -10,6 +11,7 @@ import com.helpdesk.service.FuncionarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -30,18 +32,28 @@ public class FuncionarioChamadoServiceImpl implements FuncionarioChamadoService 
     }
 
     @Override
-    public FuncionarioChamado update(FuncionarioChamado funcionarioChamado, Integer id) {
+    public FuncionarioChamado update(FuncionarioChamado funcionarioChamado, Long id) {
         funcionarioChamado.setId(id);
         return funcionarioChamado;
     }
 
     @Override
-    public FuncionarioChamado findById(Integer id) {
+    public FuncionarioChamado findById(Long id) {
         return funcionarioChamadoRepository.findById(id).get();
     }
 
     @Override
-    public void delete(Integer id) {
+    public List<Chamado> findChamadoByFuncionarioId(Long id) {
+        List<Chamado> chamados = new ArrayList<>();
+       funcionarioChamadoRepository.findByFuncionarioId(id).forEach(funcionarioChamado -> {
+           chamados.add(funcionarioChamado.getChamado());
+       });
+       return chamados;
+    }
+
+
+    @Override
+    public void delete(Long id) {
     funcionarioChamadoRepository.delete(findById(id));
     }
 

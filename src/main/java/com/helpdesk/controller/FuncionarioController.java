@@ -17,8 +17,12 @@ public class FuncionarioController {
     private FuncionarioService funcionarioService;
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<Funcionario> findById(@PathVariable Long matricula){
-        return ResponseEntity.ok().body(funcionarioService.findById(matricula));
+    public ResponseEntity<Funcionario> findById(@PathVariable Long id){
+        return ResponseEntity.ok().body(funcionarioService.findById(id));
+    }
+    @GetMapping(value = "tipo/{id}")
+    public ResponseEntity<List<Funcionario>> findByTipoId(@PathVariable Long id){
+        return ResponseEntity.ok().body(funcionarioService.findByTipoId(id));
     }
 
     @GetMapping

@@ -1,5 +1,6 @@
 package com.helpdesk.controller;
 
+import com.helpdesk.model.Chamado;
 import com.helpdesk.model.FuncionarioChamado;
 import com.helpdesk.model.dto.AtribuirChamadoDto;
 import com.helpdesk.model.dto.FuncionarioDto;
@@ -18,7 +19,7 @@ public class FuncionarioChamadoController {
     FuncionarioChamadoService funcionarioChamadoService;
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<FuncionarioChamado> findById(@PathVariable Integer id){
+    public ResponseEntity<FuncionarioChamado> findById(@PathVariable Long id){
         return ResponseEntity.ok().body(funcionarioChamadoService.findById(id));
     }
 
@@ -27,13 +28,18 @@ public class FuncionarioChamadoController {
         return ResponseEntity.ok().body(funcionarioChamadoService.findAll());
     }
 
+    @GetMapping(value = "funcionario/{id}")
+    public ResponseEntity<List<Chamado>> findByFuncionarioId(@PathVariable Long id){
+        return ResponseEntity.ok().body(funcionarioChamadoService.findChamadoByFuncionarioId(id));
+    }
+
     @PostMapping
     public ResponseEntity<FuncionarioChamado> atribuirChamado(@RequestBody AtribuirChamadoDto dto){
         return ResponseEntity.status(HttpStatus.CREATED).body(funcionarioChamadoService.add(dto));
     }
 
     @DeleteMapping(value = "/{id}")
-    public ResponseEntity deleteById(@PathVariable Integer id){
+    public ResponseEntity deleteById(@PathVariable Long id){
         funcionarioChamadoService.delete(id);
         return ResponseEntity.noContent().build();
     }

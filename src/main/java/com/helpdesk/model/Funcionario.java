@@ -18,7 +18,7 @@ public class Funcionario implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "FUN_MATRICULA")
-    private Long matricula;
+    private Long id;
 
     @Column(name = "FUN_NOME")
     private String nome;

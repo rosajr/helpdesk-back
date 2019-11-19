@@ -10,6 +10,7 @@ public interface FuncionarioService {
     Funcionario add(FuncionarioDto funcionarioDto);
     Funcionario update(FuncionarioDto funcionarioDto, Long id);
     Funcionario findById(Long id);
+    List<Funcionario> findByTipoId(Long id);
     void delete(Long id);
     List<Funcionario> findAll();
 }
