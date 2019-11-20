@@ -9,7 +9,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ChamadoDto {
    private String description;
-   private Long setorId;
    private Long funcionarioMat;
-   private Long statusId;
 }

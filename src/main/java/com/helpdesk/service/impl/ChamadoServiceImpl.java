@@ -37,8 +37,8 @@ public class ChamadoServiceImpl implements ChamadoService {
         Chamado chamado = new Chamado();
         chamado.setDescription(chamadoDto.getDescription());
         chamado.setFuncionario(funcionarioRepository.findById(chamadoDto.getFuncionarioMat()).get());
-        chamado.setSetor(setorRepository.findById(chamadoDto.getSetorId()).get());
-        chamado.setStatus(statusRepository.findById(chamadoDto.getStatusId()).get());
+        chamado.setSetor(setorRepository.findById((long)5).get());
+        chamado.setStatus(statusRepository.findById((long)1).get());
         return chamadoRepository.save(chamado);
     }
 
@@ -47,8 +47,8 @@ public class ChamadoServiceImpl implements ChamadoService {
         Chamado chamado = findById(id);
         chamado.setDescription(chamadoDto.getDescription());
         chamado.setFuncionario(funcionarioRepository.findById(chamadoDto.getFuncionarioMat()).get());
-        chamado.setSetor(setorRepository.findById(chamadoDto.getSetorId()).get());
-        chamado.setStatus(statusRepository.findById(chamadoDto.getStatusId()).get());
+        chamado.setSetor(setorRepository.findById((long)5).get());
+        chamado.setStatus(statusRepository.findById((long)1).get());
         return chamadoRepository.save(chamado);
     }
 
